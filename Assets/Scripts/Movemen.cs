@@ -81,14 +81,14 @@ public class Movemen : MonoBehaviour
             if (jumpRequest)
             {
                 jumpRequest = false;
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
             }
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" && rb.velocity.magnitude > .5f)
+        if (collision.gameObject.tag == "Ground" && rb.linearVelocity.magnitude > .5f)
         {
             PlayParticles(collision.contacts[0].point);
         }
